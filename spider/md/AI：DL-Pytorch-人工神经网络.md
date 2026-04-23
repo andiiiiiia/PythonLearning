@@ -46,30 +46,34 @@ z：内部状态值
 PS：为了便于计算和理解，不考虑偏置量b  
 
 输入层为两个样本，每个样本有5个特征，均为(1*5)：  
-$
-X_1 = \begin{bmatrix}
-{x_{11}}&{x_{12}}&{x_{13}}&{x_{14}}&{x_{15}}\\
-\end{bmatrix}
-$  
+
+
+$$X_1 = 
+\begin{bmatrix}
+x_{11} & x_{12} & x_{13} & x_{14} & x_{15}
+\end{bmatrix}$$  
+ 
   
-$
-X_2 = \begin{bmatrix}
+$$X_2 = 
+\begin{bmatrix}
 {x_{21}}&{x_{22}}&{x_{23}}&{x_{24}}&{x_{25}}\\
-\end{bmatrix}
-$  
+\end{bmatrix}$$   
+  
 
 真实标签值为：  
-$
+
+$$
 Y_1 = \begin{bmatrix}
 {y_{11}}&{y_{12}}\\
 \end{bmatrix}
-$  
+$$  
 
-$
+  
+$$
 Y_2 = \begin{bmatrix}
 {y_{21}}&{y_{22}}\\
 \end{bmatrix}
-$  
+$$  
 
 隐藏层(1)有4个神经元，神经元分别为:  $Neuron_{11},Neuron_{12},Neuron_{13},Neuron_{14}$  
 输出层(2)为2个神经元，神经元分别为:  $Neuron_{21},Neuron_{22}$  
@@ -78,7 +82,8 @@ $
 ### 1.4.2 隐藏层计算过程
 **Neuron_11计算过程:**  
 权重矩阵(5*1)为:  
-$
+
+$$
 W_{11}=\begin{bmatrix}
 {w_{111}}\\
 {w_{112}}\\
@@ -86,7 +91,7 @@ W_{11}=\begin{bmatrix}
 {w_{114}}\\
 {w_{115}}\\
 \end{bmatrix}
-$  
+$$  
 
 PS：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
@@ -98,7 +103,8 @@ $out_{11} = sigmoid(in_{11})$
 
 **Neuron_12计算过程:**  
 权重矩阵(5*1)为:  
-$
+
+$$
 W_{12} = \begin{bmatrix}
 {w_{121}}\\
 {w_{122}}\\
@@ -106,7 +112,8 @@ W_{12} = \begin{bmatrix}
 {w_{124}}\\
 {w_{125}}\\
 \end{bmatrix}
-$  
+$$  
+
 ps：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
 $Neuron_{12}$  的输入值为：  
@@ -117,7 +124,8 @@ $out_{12} = sigmoid(in_{12})$
 
 **Neuron_13计算过程:**  
 权重矩阵(5*1)为:  
-$
+
+$$
 W_{13} = \begin{bmatrix}
 {w_{131}}\\
 {w_{132}}\\
@@ -125,7 +133,8 @@ W_{13} = \begin{bmatrix}
 {w_{134}}\\
 {w_{135}}\\
 \end{bmatrix}
-$  
+$$  
+
 ps：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
 $Neuron_{13}$  的输入值为：  
@@ -136,7 +145,8 @@ $out_{13} = sigmoid(in_{13})$
 
 **Neuron_14计算过程:**  
 权重矩阵(5*1)为:  
-$
+
+$$
 W_{14} = \begin{bmatrix}
 {w_{141}}\\
 {w_{142}}\\
@@ -144,7 +154,8 @@ W_{14} = \begin{bmatrix}
 {w_{144}}\\
 {w_{145}}\\
 \end{bmatrix}
-$  
+$$  
+
 ps：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
 $Neuron_{14}$  的输入值为：  
@@ -155,7 +166,8 @@ $out_{14} = sigmoid(in_{14})$
 
 **隐藏层1总结：**  
 **权重矩阵(5*4)为：**  
-$
+
+$$
 W_{1}=\begin{bmatrix}
 {w_{111}}&{w_{121}}&{w_{131}}&{w_{141}}\\
 {w_{112}}&{w_{122}}&{w_{132}}&{w_{142}}\\
@@ -163,69 +175,82 @@ W_{1}=\begin{bmatrix}
 {w_{114}}&{w_{124}}&{w_{134}}&{w_{144}}\\
 {w_{115}}&{w_{125}}&{w_{135}}&{w_{145}}\\
 \end{bmatrix}
-$  
+$$  
+
 **输出矩阵(1*4)为：**  
-$
+
+$$
 out_{1} = \begin{bmatrix}
 {out_{11}}&{out_{12}}&{out_{13}}&{out_{14}}\\
 \end{bmatrix}
-$  
+$$  
 
 PS: 这里为了方便理解，不进行转置，权重矩阵一列代表一个神经元，采用5 * 4来表示。  实际在pytorch中时，一行代表一个神经元的权重矩阵 ，总体权重矩阵应该是(4 * 5)的，  $y = x * w^T$    下面输出层同理，不赘述。
 
 ### 1.4.3 输出层计算过程
 **Neuron_21计算过程:**  
 权重矩阵(4*1)为:  
-$
+
+$$
 W_{21}=\begin{bmatrix}
 {w_{211}}\\
 {w_{212}}\\
 {w_{213}}\\
 {w_{214}}\\
 \end{bmatrix}
-$  
+$$ 
+
 ps：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
 $Neuron_{21}$  的输入值为：  
+
 $in_{21} = out_{11}*w_{211} + out_{12}*w_{212} + out_{13}*w_{213} + out_{14}*w_{214}$  
 
 经激活函数之后(假设sigmoid)值(输出值)为：  
+
 $out_{21} = sigmoid(in_{21})$  
 
 **Neuron_22计算过程:**  
 权重矩阵(4*1)为:  
-$
+
+$$
 W_{22}=\begin{bmatrix}
 {w_{221}}\\
 {w_{222}}\\
 {w_{223}}\\
 {w_{224}}\\
 \end{bmatrix}
-$  
+$$  
+
 ps：第一个下标为层数，第二个下标为第几个神经元，第三个下标为第几个权重值。  
 
 $Neuron_{22}$  的输入值为：  
+
 $in_{22} = out_{11}*w_{221} + out_{12}*w_{222} + out_{13}*w_{223} + out_{14}*w_{224}$  
 
 经激活函数之后(假设sigmoid)值(输出值)为：  
+
 $out_{22} = sigmoid(in_{22})$  
 
 **输出层2总结：**  
 **权重矩阵(4*2)为：**  
-$
+
+$$
 W_{2}=\begin{bmatrix}
 {w_{211}}&{w_{221}}\\
 {w_{212}}&{w_{222}}\\
 {w_{213}}&{w_{223}}\\
 {w_{214}}&{w_{224}}\\
 \end{bmatrix}
-$  
+$$  
+
 **输出矩阵(1*2)为：**  
-$
+
+$$
 out_{2} = \begin{bmatrix}
 {out_{21}}&{out_{22}}\\
 \end{bmatrix}
-$  
+$$  
 
 ### 1.4.4 损失函数
 假设损失函数采用均方误差MSE:  
@@ -234,27 +259,34 @@ $Loss = \frac{1}{2}[(y_{11}-out_{21})^2 + (y_{12}-out_{22})^2]$
 
 ### 1.4.5 计算输出层梯度并更新
 **计算输出层权重梯度：**  
+
 以输出层第一个神经元的第一个权重值  $w_{211}$  为例：  
-$\frac{\partial Loss }{\partial w_{211}} = \frac{\partial Loss }{\partial out_{21}} * \frac{\partial out_{21} }{\partial w_{211}} = (out_{21} - y_{11})*out_{11}*out_{21}*(1-out_{21})$   
+
+$\frac{\partial Loss }{\partial w_{211}} = \frac{\partial Loss }{\partial out_{21}} * \frac{\partial out_{21} }{\partial w_{211}} = (out_{21} - y_{11}) * out_{11} * out_{21} * (1-out_{21})$   
+
 **同理可得，**  
+
 $\frac{\partial Loss }{\partial w_{212}} , \frac{\partial Loss }{\partial w_{213}} , \frac{\partial Loss }{\partial w_{214}} , \frac{\partial Loss }{\partial w_{221}} , \frac{\partial Loss }{\partial w_{222}} , \frac{\partial Loss }{\partial w_{223}} , \frac{\partial Loss }{\partial w_{224}}$  
 
 **更新输出层权重：**  
+
 $w_{2ij} = w_{2ij} - \eta*\frac{\partial Loss }{\partial w_{2ij}}$  
 
 ### 1.4.6 计算隐藏层梯度并更新
-以隐藏层1的第一个神经元的第一个权重值  $w_{111}$  为例:  
-$\frac{\partial Loss }{\partial w_{111}} = (\frac{\partial Loss }{\partial out_{21}}*\frac{\partial out_{21} }{\partial out_{11}} + \frac{\partial Loss }{\partial out_{22}}*\frac{\partial out_{22} }{\partial out_{11}})*\frac{\partial out_{11} }{\partial w_{111}} $  
+
+以隐藏层1的第一个神经元的第一个权重值  $w_{111}$   为例:  
+
+$\frac{\partial Loss }{\partial w_{111}} = (\frac{\partial Loss }{\partial out_{21}} * \frac{\partial out_{21} }{\partial out_{11}} + \frac{\partial Loss }{\partial out_{22}} * \frac{\partial out_{22} }{\partial out_{11}}) * \frac{\partial out_{11} }{\partial w_{111}} $  
 
 $\frac{\partial Loss }{\partial out_{21}} = out_{21} - y_{11}$   
   
 $\frac{\partial Loss }{\partial out_{22}} = out_{22} - y_{12}$
   
-$\frac{\partial out_{21} }{\partial out_{11}} = w_{211}*out_{21}*(1-out_{21})$  
+$\frac{\partial out_{21} }{\partial out_{11}} = w_{211} * out_{21} * (1-out_{21})$  
   
-$\frac{\partial out_{22} }{\partial out_{11}} = w_{221}*out_{22}*(1-out_{22})$  
+$\frac{\partial out_{22} }{\partial out_{11}} = w_{221} * out_{22} * (1-out_{22})$  
   
-注意：这里的$w_{211} 和 w_{221} 都是输出层更新后的权重$  
+注意：这里的  $w_{211}$  和  $w_{221}$  都是输出层更新后的权重  
 
 同理可得，其他权重下降梯度  
 
@@ -271,7 +303,7 @@ f(x)取值范围：(0,1)
 f(0) = 0.5  
   
 **导数：**  
-导数梯度：  $\dot{f(x)} = f(x)*(1-f(x))$  
+导数梯度：  $\dot{f(x)} = f(x) * (1-f(x))$  
 当f(x) = 0.5时，导数取得最大值0.25 
 
 ### 2.1.2 绘制代码
