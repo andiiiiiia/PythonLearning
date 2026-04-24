@@ -194,8 +194,8 @@ epoch_list [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 图例略  
 
-## 5.3 指定间隔学习率衰减 torch.optim.lr_scheduler.MultiStepLR(optimizer,milestones,gamma)
-### 5.3.1 原理
+## 1.3 指定间隔学习率衰减 torch.optim.lr_scheduler.MultiStepLR(optimizer,milestones,gamma)
+### 1.3.1 原理
 
 初始学习率（initial learning rate）：训练开始时的学习率。  
 
@@ -205,7 +205,7 @@ epoch_list [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 学习率调度器（learning rate scheduler）：用于在训练过程中动态调整学习率。  
 
-### 5.3.2 代码说明
+### 1.3.2 代码说明
 
 ```python
 def multi_step_lr():
@@ -255,8 +255,8 @@ epoch_list [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 
 图例略  
 
-## 5.3 指数学习率衰减 torch.optim.lr_scheduler.ExponentialLR(optimizer,gamma)
-### 5.3.1 基本原理
+## 1.4 指数学习率衰减 torch.optim.lr_scheduler.ExponentialLR(optimizer,gamma)
+### 1.4.1 基本原理
 
 初始学习率（initial learning rate）：训练开始时的学习率。  
 
@@ -269,7 +269,7 @@ epoch_list [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 $lr = lr * gamma^{epoch}$  
 
 
-### 5.3.2 代码说明
+### 1.3.2 代码说明
 ```python
 def exp_lr():
     # 200轮epoch循环
@@ -316,7 +316,7 @@ epoch_list [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19
 ```
 图例略  
 
-## 5.4 总结
+## 1.5 总结
 | 方法 | 等间隔学习率衰减（Step Decay） | 指定间隔学习率衰减（Exponential Decay） | 指数学习率衰减（Exponential Moving Average Decay） |
 |------|-------------------------------|----------------------------------------|--------------------------------------------------|
 | **衰减方式** | 固定步长衰减 | 指定步长衰减 | 平滑指数衰减，历史平均考虑 |
